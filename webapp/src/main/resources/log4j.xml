@@ -1,0 +1,38 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="false">
+
+    <!--Console appender -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- Rolling appenders -->
+    <appender name="roll-by-time"
+        class="org.apache.log4j.rolling.RollingFileAppender">
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern"
+                value="/tmp/target/classes/logs/app.%d{HH-mm}.log"/>
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %m%n"/>
+        </layout>
+    </appender>
+
+    <!--Override log level for specified package -->
+    <category name="com.clearwaterps">
+        <priority value="TRACE"/>
+    </category>
+
+    <category name="WebServer">
+        <priority value="TRACE"/>
+        <appender-ref ref="roll-by-time"/>
+    </category>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>

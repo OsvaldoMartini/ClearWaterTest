@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monitoring Logs</title>
+<meta http-equiv="cache-control" content="no-cache" />
+
+<style> 
+input {
+  width: 50px;
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script><script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function fetchdata(){
+	$.ajax({
+		url : "http://localhost/logs",
+		success : function(result) {
+			var obj, dbParam, xmlhttp, myObj, x, txt = "";
+			obj = { table: "customers", limit: 20 };
+			dbParam = JSON.stringify(obj);
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			  if (this.readyState == 4 && this.status == 200) {
+			    myObj = JSON.parse(this.responseText);
+			    txt += "<table border='1'>"
+			      txt += "<tr><td>INFO:</td><td>"+myObj.info +"</td></tr>";
+			      txt += "<tr><td>WARNING:</td><td>"+myObj.warning +"</td></tr>";
+			      txt += "<tr><td>ERROR:</td><td>"+myObj.error +"</td></tr>";
+			    txt += "</table>"    
+			    document.getElementById("tableGrid").innerHTML = txt;
+			  }
+			};
+			xmlhttp.open("GET", "logs", true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlhttp.send("x=" + dbParam);
+		
+		}
+	});
+	}
+
+	$(document).ready(function() {
+		 setInterval(fetchdata,5000);
+		 
+		 button_up=document.getElementById('up');
+		 button_down=document.getElementById('down');
+
+		 button_up.onclick=function() {setQuantity('up');}
+		 button_down.onclick=function() {setQuantity('down');}
+
+		 quantity = document.getElementById('quantity');
+
+		 function setQuantity(upordown) {
+		     if (quantity.value > 1) {
+		         if (upordown == 'up'){++quantity.value;}
+		         else if (upordown == 'down'){--quantity.value;}}
+		     else if (quantity.value == 1) {
+		         if (upordown == 'up'){++quantity.value;}}
+		     else
+		         {quantity.value=1;}
+		     
+			 setInterval(fetchdata,quantity.value * 1000);
+		     
+		 }
+	});
+</script>
+</head>
+<body style="background: #e6f3ff;">
+	<h1 style="color: blue; text-align: center; font-style: bold"
+		id="server_name_title">Welcome to</h1>
+	<h1 style="color: #00b4ff; text-align: center; font-style: italic"
+		id="server_name"></h1>
+<div class="order-option">Monitoring Time(s): <span id="quantity-field">
+        <button id="up">+</button>
+        <input type="text" id="quantity" value="5">
+        <button id="down">-</button>
+    </span>
+
+</div>
+	<p id="tableGrid"></p>
+</body>
+</html>
