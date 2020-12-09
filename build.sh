@@ -1,0 +1,1 @@
+mvn -f webapp/pom.xml clean package
