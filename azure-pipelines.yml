@@ -9,7 +9,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'OsvaldoMartini'
+  azureSubscription: 'Martini-Free-Subscription'
   
   # Web app name
   webAppName: 'clear-water-pipeline'
