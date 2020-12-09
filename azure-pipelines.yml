@@ -15,7 +15,7 @@ variables:
   webAppName: 'clear-water-pipeline'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'ubuntu-18.04'
 
 stages:
 - stage: Build
