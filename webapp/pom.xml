@@ -59,9 +59,9 @@
 							<mainClass>Application</mainClass>
 						</manifest>
 					</archive>
-					<descriptorRefs>
+					<!--descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
+					</descriptorRefs-->
 				</configuration>
 			</plugin>
 
