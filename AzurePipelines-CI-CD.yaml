@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'mcr.microsoft.com/java/jdk:8u181-zulu-ubuntu' # Hosted Ubuntu 1604
+  vmImage: 'ubuntu-16.04' # Hosted Ubuntu 1604
   demands: maven
 
 steps:
