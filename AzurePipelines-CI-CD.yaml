@@ -7,6 +7,10 @@ steps:
   displayName: 'Maven webapp/pom.xml'
   inputs:
     mavenPomFile: 'webapp/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '11u9-zulu-ubuntu-18.04'
+    jdkArchitectureOption: 'x64'
     codeCoverageToolOption: Cobertura
 
 - task: CopyFiles@2

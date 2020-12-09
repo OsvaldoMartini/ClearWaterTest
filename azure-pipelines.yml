@@ -31,6 +31,10 @@ stages:
       displayName: 'Maven Package'
       inputs:
         mavenPomFile: 'webapp/pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '11u9-zulu-ubuntu-18.04'
+        jdkArchitectureOption: 'x64'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
