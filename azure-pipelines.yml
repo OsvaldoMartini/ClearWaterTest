@@ -15,7 +15,7 @@ variables:
   webAppName: 'clear-water-pipeline'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'mcr.microsoft.com/java/jdk:8u181-zulu-ubuntu'
 
 stages:
 - stage: Build

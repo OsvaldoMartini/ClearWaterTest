@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'mcr.microsoft.com/java/jdk:8u181-zulu-ubuntu'
 
 steps:
 - task: Maven@3
