@@ -12,7 +12,7 @@ variables:
   azureSubscription: 'ClearWater-Resource-Conn'
   
   # Web app name
-  webAppName: 'clearwaterps'
+  webAppName: 'ClearWater-App'
 
   # Agent VM image name
   vmImageName: 'ubuntu-18.04'
