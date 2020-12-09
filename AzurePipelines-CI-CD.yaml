@@ -4,9 +4,9 @@ pool:
 
 steps:
 - task: Maven@3
-  displayName: 'Maven app/pom.xml'
+  displayName: 'Maven webapp/pom.xml'
   inputs:
-    mavenPomFile: 'app/pom.xml'
+    mavenPomFile: 'webapp/pom.xml'
     codeCoverageToolOption: Cobertura
 
 - task: CopyFiles@2
